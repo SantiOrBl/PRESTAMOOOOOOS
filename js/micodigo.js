@@ -3,7 +3,7 @@ let marcas = [];
 let stock = [];
 
 
-window.onload = function() {
+window.onload = function(){
     cargarDatosDesdeLocalStorage();
     imprimirEquipos(); // Para asegurar q los equipos se muestren
     imprimirInstructores(); // same con instructores
@@ -90,13 +90,16 @@ addEquipoBoton.addEventListener("click", ()=>{
         equipos.push(nombreEquipo);
         marcas.push(marcaEquipo);
         stock.push(cantidadEquipo);
+
+        guardarDatosEnLocalStorage();
     };
         
 
         
 
-    guardarDatosEnLocalStorage();
+    
     imprimirEquipos();
+    
 
     Swal.fire({
         icon: "success",
@@ -169,6 +172,8 @@ function addInstructor(){
             title: "Hecho...",
             text: "Se ha registrado correctamente un instructor",
           });
+
+          guardarDatosEnLocalStorage();
           
         }else{
             Swal.fire({
@@ -178,7 +183,7 @@ function addInstructor(){
               });
     }
 
-
+    guardarDatosEnLocalStorage();
     imprimirInstructores()
     
 
@@ -455,6 +460,7 @@ function devolverPrestamo(){
     }
     imprimirPrestamos();
     imprimirEquipos();
+    imprimirInstructores();
     guardarDatosEnLocalStorage();
 
 
